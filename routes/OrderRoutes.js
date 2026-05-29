@@ -10,7 +10,7 @@ const {
     updateOrderStatus,
     cancelOrder,
 
-} = require("../controllers/orderController");
+} = require("../controllers/OrderController");
 
 
 // PLACE ORDER

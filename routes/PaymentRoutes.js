@@ -2,7 +2,7 @@ const express = require("express");
 
 const {
     createOrder,
-} = require("../controllers/paymentController");
+} = require("../controllers/PaymentController");
 
 const router = express.Router();
 
