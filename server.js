@@ -4,7 +4,7 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 const http = require("http");
 const { Server } = require("socket.io");
-const authRoutes = require("./controllers/AuthController");
+const authRoutes = require("./routes/AuthRoutes");
 const protect = require("./middleware/authMiddleware");
 const productRoutes = require("./routes/ProductRoutes");
 const orderRoutes = require("./routes/OrderRoutes"); const paymentRoutes = require("./routes/PaymentRoutes");
