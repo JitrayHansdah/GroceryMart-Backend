@@ -1,4 +1,5 @@
 const Product = require("../models/Product");
+const cloudinary = require("../config/cloudinary");
 
 
 // ADD PRODUCT
@@ -6,32 +7,41 @@ const addProduct = async (req, res) => {
 
     try {
 
-        const {
-            name,
-            price,
-            image,
-            category,
-            description,
-            stock,
-        } = req.body;
+        const result =
+            await cloudinary.uploader.upload(
+                req.file.path
+            );
 
-        const product = await Product.create({
+        const product =
+            await Product.create({
 
-            name,
-            price,
-            image,
-            category,
-            description,
-            stock,
+                name:
+                    req.body.name,
 
-        });
+                category:
+                    req.body.category,
+
+                price:
+                    req.body.price,
+
+                stock:
+                    req.body.stock,
+
+                description:
+                    req.body.description,
+
+                image:
+                    result.secure_url,
+
+            });
 
         res.status(201).json(product);
 
     } catch (error) {
 
         res.status(500).json({
-            message: error.message,
+            message:
+                error.message,
         });
     }
 };

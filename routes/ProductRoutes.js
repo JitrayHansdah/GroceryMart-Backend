@@ -1,4 +1,6 @@
 const express = require("express");
+const upload =
+    require("../middleware/upload");
 
 const {
 
@@ -14,8 +16,11 @@ const router = express.Router();
 
 
 // ADD PRODUCT
-router.post("/", addProduct);
-
+router.post(
+    "/",
+    upload.single("image"),
+    addProduct
+);
 // GET ALL PRODUCTS
 router.get("/", getProducts);
 
